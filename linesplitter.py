@@ -44,6 +44,7 @@ for i in xrange(0,horProj.size):
 
 
 cv2.imshow('img2',bin)
+cv2.imwrite('inverted.png',bin)
 
 
 result = cv2.cvtColor(bin, cv2.COLOR_GRAY2BGR)
@@ -55,5 +56,6 @@ for i in xrange(0,len(ycoords)):
     cv2.line(result,(0,ycoords[i]),(cols,ycoords[i]),(0,255,0),1)
 
 cv2.imshow('result', result)
+cv2.imwrite('result.png',result)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
