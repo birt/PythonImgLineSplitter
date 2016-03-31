@@ -62,6 +62,7 @@ for i in xrange(0,len(ycoords)):
              
              sliced = img[ycoords[i-1]:ycoords[i], 0:cols]
              cv2.imshow('sliced' + str(i), sliced)
+             cv2.imwrite('sliced\sliced' + str(i) + '.png',sliced)
     count = count + 1
 
 cv2.imshow('result', result)
