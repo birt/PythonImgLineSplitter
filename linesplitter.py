@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-#import cv2.cv as cv
 
 # python reimplementation of:
 #
@@ -50,10 +49,20 @@ cv2.imwrite('inverted.png',bin)
 result = cv2.cvtColor(bin, cv2.COLOR_GRAY2BGR)
 (rows,cols,somthing) = result.shape
 
+count = 0
 for i in xrange(0,len(ycoords)):
     # C++ version
     # line(result, Point(0, ycoords[i]), Point(result.cols, ycoords[i]), Scalar(0, 255, 0));
     cv2.line(result,(0,ycoords[i]),(cols,ycoords[i]),(0,255,0),1)
+    if count = 2:
+             # from: http://answers.opencv.org/question/14702/python-crop-not-working/
+             # "The [] notation is really array slicing in numpy and not an OpenCV function, 
+             # so the first pair is rows and the second pair columns. This means you need
+             # crop = vis[y1:y2, x1:x2]"
+             
+             sliced = result[ycoords[i-1]:ycoords[i], 0:cols]
+             cv2.imshow('sliced', sliced)
+    count = count + 1
 
 cv2.imshow('result', result)
 cv2.imwrite('result.png',result)
