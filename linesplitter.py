@@ -54,14 +54,14 @@ for i in xrange(0,len(ycoords)):
     # C++ version
     # line(result, Point(0, ycoords[i]), Point(result.cols, ycoords[i]), Scalar(0, 255, 0));
     cv2.line(result,(0,ycoords[i]),(cols,ycoords[i]),(0,255,0),1)
-    if count = 2:
+    if count > 0:
              # from: http://answers.opencv.org/question/14702/python-crop-not-working/
              # "The [] notation is really array slicing in numpy and not an OpenCV function, 
              # so the first pair is rows and the second pair columns. This means you need
              # crop = vis[y1:y2, x1:x2]"
              
-             sliced = result[ycoords[i-1]:ycoords[i], 0:cols]
-             cv2.imshow('sliced', sliced)
+             sliced = img[ycoords[i-1]:ycoords[i], 0:cols]
+             cv2.imshow('sliced' + str(i), sliced)
     count = count + 1
 
 cv2.imshow('result', result)
